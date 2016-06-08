@@ -11,16 +11,18 @@
 |
 */
 $api = app('Dingo\Api\Routing\Router');
-$app->get('/', function () use ($app) {
-    return $app->version();
-});
-$api->version('v1', ['namespace' => 'App\Http\Controllers\Api\V1'], function ($api) {
-    // 需要jwt验证后才能使用的API 也就是登陆之后,才能访问的路由,比如用户详细
-    $api->group(['middleware' => 'jwt.auth'], function ($api) {
-        #Auth
-        $api->get('auth/show', [
-            'as'   => 'auth.show',
-            'uses' => 'AuthController@show'
-        ]);
+//$app->get('/', function () use ($app) {
+//    return $app->version();
+//});
+$api->version('v1',function ($api){
+    $api->group(['namespace'=>'App\Api\V1\Controllers'],function ($api){
+        $api->post('user/login','AuthController@userLogin');
+        $api->post('user/register','AuthController@register');
+        $api->group(['middleware'=>'jwt.auth'],function($api){
+//            $api->get('user/me','AuthController@getAuthenticatedUser');
+//            $api->get('lessons','LessonsController@index');
+//            $api->get('lessons/{id}','LessonsController@show');
+        });
+
     });
 });

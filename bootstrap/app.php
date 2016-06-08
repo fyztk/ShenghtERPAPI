@@ -31,7 +31,7 @@ class_alias('Dingo\Api\Facade\API', 'API');
 class_alias('Dingo\Api\Facade\Route', 'Route');
 
 
-// $app->withEloquent();
+ $app->withEloquent();
 
 /*
 |--------------------------------------------------------------------------
@@ -53,8 +53,7 @@ $app->singleton(
     Illuminate\Contracts\Console\Kernel::class,
     App\Console\Kernel::class
 );
-$app->register(Tymon\JWTAuth\Providers\JWTAuthServiceProvider::class);
-$app->register(Dingo\Api\Provider\LumenServiceProvider::class);
+
 /*
 |--------------------------------------------------------------------------
 | Register Middleware
@@ -90,7 +89,8 @@ $app->register(Dingo\Api\Provider\LumenServiceProvider::class);
 // $app->register(App\Providers\AppServiceProvider::class);
 // $app->register(App\Providers\AuthServiceProvider::class);
 // $app->register(App\Providers\EventServiceProvider::class);
-
+$app->register(Tymon\JWTAuth\Providers\JWTAuthServiceProvider::class);
+$app->register(Dingo\Api\Provider\LumenServiceProvider::class);
 /*
 |--------------------------------------------------------------------------
 | Load The Application Routes
