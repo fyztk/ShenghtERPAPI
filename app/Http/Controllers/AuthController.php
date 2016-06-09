@@ -6,7 +6,7 @@
  * Time: 13:15
  */
 
-namespace App\Api\V1\Controllers;
+namespace App\Http\Controllers;
 //
 use App\User;
 use Illuminate\Http\Request;

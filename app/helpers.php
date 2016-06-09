@@ -13,3 +13,4 @@ if ( ! function_exists('config_path'))
         return app()->basePath() . '/config' . ($path ? '/' . $path : $path);
     }
 }
+?>

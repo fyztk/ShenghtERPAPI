@@ -29,8 +29,8 @@ class_alias('Tymon\JWTAuth\Facades\JWTAuth', 'JWTAuth');
 class_alias('Tymon\JWTAuth\Facades\JWTFactory', 'JWTFactory');
 class_alias('Dingo\Api\Facade\API', 'API');
 class_alias('Dingo\Api\Facade\Route', 'Route');
-
-
+$app->alias('JWTAuth', 'Tymon\JWTAuth\Facades\JWTAuth');
+app()->make('JWTAuth');
  $app->withEloquent();
 
 /*
