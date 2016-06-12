@@ -68,12 +68,6 @@ $app->singleton(
 //    App\Http\Middleware\ExampleMiddleware::class
 // ]);
 
- $app->routeMiddleware([
-     'auth' => App\Http\Middleware\Authenticate::class,
-//     'jwt.auth'    => Tymon\JWTAuth\HTTP\Middleware\GetUserFromToken::class,
-     'jwt.refresh' => Tymon\JWTAuth\HTTP\Middleware\RefreshToken::class,
-     'cors' => App\Http\Middleware\Cors::class,
- ]);
 
 /*
 |--------------------------------------------------------------------------
@@ -91,6 +85,12 @@ $app->singleton(
 // $app->register(App\Providers\EventServiceProvider::class);
 $app->register(Tymon\JWTAuth\Providers\LumenServiceProvider::class);
 $app->register(Dingo\Api\Provider\LumenServiceProvider::class);
+$app->routeMiddleware([
+    'auth' => App\Http\Middleware\Authenticate::class,
+    'jwt.auth'    => App\Http\Middleware\JwtAuth::class,
+    'jwt.refresh' => Tymon\JWTAuth\HTTP\Middleware\RefreshToken::class,
+    'cors' => App\Http\Middleware\Cors::class,
+]);
 
 //app('Dingo\Api\Auth\Auth')->extend('jwt', function ($app) {
 //    return new Dingo\Api\Auth\Provider\JWT($app['Tymon\JWTAuth\JWTAuth']);
