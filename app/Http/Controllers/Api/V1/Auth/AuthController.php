@@ -16,22 +16,23 @@ class AuthController extends ApiController
 {
     public function userLogin()
     {
-        $validator = \Validator::make($this->request->all(), [
-            'username' => 'required',
-            'password' => 'required',
-        ]);
+//        $validator = \Validator::make($this->request->all(), [
+//            'username' => 'required',
+//            'password' => 'required',
+//        ]);
 
         $credentials = $this->request->only('username', 'password');
 
         if (!$token = JWTAuth::attempt($credentials)) {
-            $validator->after(function ($validator) {
-                $validator->errors()->add('password', trans('auth.failed'));
-            });
+//            $validator->after(function ($validator) {
+//                $validator->errors()->add('password', trans('auth.failed'));
+//            });
+            return $this->setStatusCode(401)->responseError('用户名或密码错误！');
         }
 
-        if ($validator->fails()) {
-            return $this->errorBadRequest($validator->messages());
-        }
+//        if ($validator->fails()) {
+//            return $this->errorBadRequest($validator->messages());
+//        }
 
         return $this->setStatusCode(200)->responseSuccessData(compact('token'));
     }
