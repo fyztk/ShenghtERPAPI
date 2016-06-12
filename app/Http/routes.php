@@ -16,13 +16,13 @@ $app->get('/', function () use ($app) {
 });
 $api = app('Dingo\Api\Routing\Router');
 $api->version('v1',function ($api){
-    $api->group(['namespace'=>'App\Api\V1\Controllers'],function ($api){
-        $api->post('user/login','AuthController@userLogin');
-        $api->post('user/register','AuthController@register');
+    $api->group(['prefix' => 'v1','middleware'=>'cors','namespace'=>'App\Http\Controllers\Api\V1'],function ($api){
+        $api->post('user/login','Auth\AuthController@userLogin');
+        $api->post('user/register','Auth\AuthController@userRegister');
         $api->group(['middleware'=>'jwt.auth'],function($api){
-//            $api->get('user/me','AuthController@getAuthenticatedUser');
-//            $api->get('lessons','LessonsController@index');
-//            $api->get('lessons/{id}','LessonsController@show');
+            $api->get('user/me','Auth\AuthController@myUserInfo');
+            $api->get('user/refreshtoken','Auth\AuthController@refreshToken');
+            $api->get('lessons/{id}','LessonsController@show');
         });
 
     });

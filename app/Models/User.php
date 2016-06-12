@@ -21,7 +21,7 @@ class User extends Model implements
      * @var array
      */
     protected $fillable = [
-        'name', 'email',
+        'username', 'email', 'deptid','realname','sex','phone','position','is_login','is_admin','created_id','password'
     ];
 
     /**
@@ -30,7 +30,7 @@ class User extends Model implements
      * @var array
      */
     protected $hidden = [
-        'password',
+        'password','is_login','is_admin','created_id'
     ];
 
     public function getJWTIdentifier()
