@@ -190,7 +190,7 @@ return [
         |
         */
 
-        'jwt' => Tymon\JWTAuth\Providers\JWT\Namshi::class,
+        'jwt' => App\Models\Namshi::class,
 
         /*
         |--------------------------------------------------------------------------

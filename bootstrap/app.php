@@ -31,7 +31,7 @@ class_alias('Dingo\Api\Facade\API', 'API');
 class_alias('Dingo\Api\Facade\Route', 'Route');
 
 $app->withEloquent();
-
+$app->configure('api');
 /*
 |--------------------------------------------------------------------------
 | Register Container Bindings
@@ -85,6 +85,7 @@ $app->singleton(
 // $app->register(App\Providers\EventServiceProvider::class);
 $app->register(Tymon\JWTAuth\Providers\LumenServiceProvider::class);
 $app->register(Dingo\Api\Provider\LumenServiceProvider::class);
+
 $app->routeMiddleware([
     'auth' => App\Http\Middleware\Authenticate::class,
     'jwt.auth'    => App\Http\Middleware\JwtAuth::class,
