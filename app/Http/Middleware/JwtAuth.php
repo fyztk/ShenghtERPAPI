@@ -27,8 +27,8 @@ class JwtAuth extends BaseMiddleware
      */
     public function handle($request, Closure $next)
     {
+        $applicationcode = str_replace('/api/v1/','',$request->getRequestUri());
         $this->authenticate($request);
-
         return $next($request);
     }
 }

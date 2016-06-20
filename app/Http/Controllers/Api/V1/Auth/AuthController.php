@@ -8,9 +8,8 @@
 namespace App\Http\Controllers\Api\V1\Auth;
 
 use App\Http\Controllers\ApiController;
-use App\Http\Controllers\BaseController;
 use JWTAuth;
-use Tymon\JWTAuth\Http\Parser\Parser;
+//use Tymon\JWTAuth\Http\Parser\Parser;
 use App\Models\User;
 
 class AuthController extends ApiController

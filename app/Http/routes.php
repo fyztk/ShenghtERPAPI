@@ -24,10 +24,12 @@ $api->version('v1',function ($api){
         $api->post('user/login','Auth\AuthController@userLogin');
         $api->post('user/register','Auth\AuthController@userRegister');
         $api->group(['middleware'=>'jwt.auth'],function($api){
-            $api->post('user/me','Auth\AuthController@myUserInfo');
+            $api->post('user/me',[
+                'as' => 'profile',
+                'uses' => 'Auth\AuthController@myUserInfo'
+            ]);
             $api->post('user/refreshtoken','Auth\AuthController@refreshToken');
-            $api->get('lessons/{id}','LessonsController@show');
+            $api->post('dept/create','Basic\DeptController@create');
         });
-
     });
 });
