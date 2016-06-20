@@ -70,8 +70,7 @@ class AuthController extends ApiController
         ];
 
         $user=User::create($newUser);
-
-        // 用户注册事件
+        
         $token = JWTAuth::fromUser($user);
 
         return $this->setStatusCode(201)->responseSuccessData(compact('token'));
