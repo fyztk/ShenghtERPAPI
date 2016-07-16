@@ -15,7 +15,7 @@
 $api = app('Dingo\Api\Routing\Router');
 $app->get('/', function () use ($app) {
     return [
-        'ProjectName'=>'ShenghtERPAPI',
+        'ProjectName'=>'fbwapi',
         'version'=>'1.0.0'
     ];
 });
